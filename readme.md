@@ -1,44 +1,51 @@
 # template Dsa or patterns personal documentation
+
 - basically , the idea is to catchup again the concept that i might get forget after solving a questions on leetcode or other platforms.
 - for revision purpose (notebook)
 
-<div  styele="background-color:#ccc; padding: 10px; ">
-### [Linked List]
+---
+
+### Linked List
+
 ##### singly linked list
- ```
- Struct Node {
-  int val;
-  Node* next;
-  Node(int x) : val(x), next(nullptr) {}
-  };
- ```
-##### traversing
 
 ```
-Node* head = new Node(1);
-Node* head = new Node(2);
-Node* cur = head; //temp ptr
+Struct ListNode {
+ int val;
+ ListNode* next;
+ listNode(int x) : val(x), next(nullptr) {}
+ };
+```
+
+##### traversing
+
+```cpp
+ListNode* head = new ListNode(1);
+ListNode* head = new ListNode(2);
+ListNode* cur = head; //temp ptr
 while (cur != nullptr) {
-  cout < cur-> val; 
+  cout < cur-> val;
   cur = cur-> next;
   }
 ```
+
 ##### deletion
 
 skipping the node to be deleted, not removing from memory
-```
+
+```cpp
  ListNode* removeElements(ListNode* head, int val) {
         while (head != nullptr && head->val == val) {
             head = head->next; //skipping head or starting untill its same
         }
-        
+
         ListNode* curr = head;
         while (curr != nullptr && curr->next != nullptr) {
             if (curr->next->val == val) {
                 curr->next = curr->next->next;
-            } 
+            }
             else {
-                curr = curr->next; 
+                curr = curr->next;
             }
         }
 
@@ -47,25 +54,28 @@ skipping the node to be deleted, not removing from memory
 ```
 
 default if head is given
-```
-Node* cur = head;
-while (cur != nullptr && cur-> next != nullptr) { 
-  Node* next_node = cur-> next;
+
+```cpp
+ListNode* cur = head;
+while (cur != nullptr && cur-> next != nullptr) {
+  ListNode* next_node = cur-> next;
   cur-> next = next_node-> next;
   delete next_node;
   }
 ```
 
 if node is given which is to be deleted (basically overwriiting and then disconnecting)
-```
+
+```cpp
 node->val=node->next->val;
 ListNode* del=node->next;
 node->next=node->next->next;
 delete del;
-``` 
+```
 
 ##### middle of list
-```
+
+```cpp
 ListNode* middleNode(ListNode* head) {
         int size=0;
         ListNode* count = head;
@@ -85,7 +95,25 @@ ListNode* middleNode(ListNode* head) {
     return head;
     }
 ```
-</div>
-<div style="background-color: #ccc">
+
+---
+
 ### cyclic sorting
-</div>
+
+i.e. to put the element at their respective indexes, 1 at 1, 3 at 3. 6 at 6 ....
+
+```cpp
+      int i = 0;
+      while (i < nums.size()) {
+            int correctIndex = nums[i] - 1;
+            if (nums[i] != nums[correctIndex]) {
+                swap(nums[i], nums[correctIndex]);
+            }
+            else {
+                i++;
+            }
+      }
+```
+
+<hr>
+---
