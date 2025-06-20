@@ -2,8 +2,7 @@
 - basically , the idea is to catchup again the concept that i might get forget after solving a questions on leetcode or other platforms.
 - for revision purpose (notebook)
 
-### Linked List
-
+### [Linked List]
 ##### singly linked list
  ```
  Struct Node {
