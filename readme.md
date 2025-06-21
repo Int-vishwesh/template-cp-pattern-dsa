@@ -1,10 +1,23 @@
-# template Dsa or patterns personal documentation
+# template - Dsa - patterns (personal documentation)
 
-- basically , the idea is to catchup again the concept that i might get forget after solving a questions on leetcode or other platforms.
-- for revision purpose (notebook)
+> basically , the idea is to catchup or grasp again the concept that i might get forget after solving a questions on leetcode or other platforms.
+> - for revision purpose (notebook)
+> - Quick reference 
 
 ---
 
+|table of content     |                   |
+|---------------------|-------------------|
+| data structures     | Array            |
+|                     | [linked list](#linked-list)      |
+|                     | [stack](#stack)        |
+| Patterns            | [Cyclic sorting](#cyclic-sorting)   |
+|                     | two pointers     |
+| Algorithms          |                  |
+|                     |     |
+
+---
+> ## Data Structures 
 ### Linked List
 
 ##### singly linked list
@@ -17,7 +30,7 @@ Struct ListNode {
  };
 ```
 
-##### traversing
+> traversing
 
 ```cpp
 ListNode* head = new ListNode(1);
@@ -29,10 +42,9 @@ while (cur != nullptr) {
   }
 ```
 
-##### deletion
+> deletion
 
 skipping the node to be deleted, not removing from memory
-
 ```cpp
  ListNode* removeElements(ListNode* head, int val) {
         while (head != nullptr && head->val == val) {
@@ -54,7 +66,6 @@ skipping the node to be deleted, not removing from memory
 ```
 
 default if head is given
-
 ```cpp
 ListNode* cur = head;
 while (cur != nullptr && cur-> next != nullptr) {
@@ -65,7 +76,6 @@ while (cur != nullptr && cur-> next != nullptr) {
 ```
 
 if node is given which is to be deleted (basically overwriiting and then disconnecting)
-
 ```cpp
 node->val=node->next->val;
 ListNode* del=node->next;
@@ -73,7 +83,7 @@ node->next=node->next->next;
 delete del;
 ```
 
-##### middle of list
+> middle of list
 
 ```cpp
 ListNode* middleNode(ListNode* head) {
@@ -96,8 +106,16 @@ ListNode* middleNode(ListNode* head) {
     }
 ```
 
+### Stacks
+> identification
+- stack is applied if its array (most probably)
+- when inner loops depends on outer loop i.e. j on i like int j=i;
+- can give a improvised solution for bruute force approach if above condition is there
+
+
 ---
 
+## Patterns
 ### cyclic sorting
 
 i.e. to put the element at their respective indexes, 1 at 1, 3 at 3. 6 at 6 ....
@@ -115,5 +133,6 @@ i.e. to put the element at their respective indexes, 1 at 1, 3 at 3. 6 at 6 ....
       }
 ```
 
-<hr>
 ---
+
+## Algorithms
