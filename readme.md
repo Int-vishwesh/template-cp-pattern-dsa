@@ -6,15 +6,15 @@
 
 ---
 
-|table of content     |                   |
-|---------------------|-------------------|
-| data structures     | Array            |
-|                     | [linked list](#linked-list)      |
-|                     | [stack](#stack)        |
-| Patterns            | [Cyclic sorting](#cyclic-sorting)   |
-|                     | two pointers     |
-| Algorithms          |                  |
-|                     |     |
+|table of content     |                                |           |
+|---------------------|------------------------------ -|-----------|
+| data structures     | [Array]()                      |           |
+|                     | [linked list](#linked-list)    | traversal,deletion, middle, reverse |
+|                     | [stack](#stack)                |           |
+| Patterns            | [Cyclic sorting](#cyclic-sorting) |        | 
+|                     | two pointers     |                         |
+| Algorithms          |                  |                         |
+|                     |                  |                         |
 
 ---
 > ## Data Structures 
