@@ -105,6 +105,22 @@ ListNode* middleNode(ListNode* head) {
     return head;
     }
 ```
+> reversing
+```
+ListNode* reverseList(ListNode* head) {
+      ListNode* ans = nullptr;
+      ListNode* curr = head;
+      
+      while (curr != nullptr) {
+          ListNode* Temp = curr->next; 
+          curr->next = ans;        
+          ans = curr;          
+          curr = Temp;      
+      }
+      
+      return ans;
+      }
+```
 
 ### Stacks
 > identification
