@@ -3,16 +3,17 @@
 > basically , the idea is to catchup or grasp again the concept that i might get forget after solving a questions on leetcode or other platforms.
 > - for revision purpose (notebook)
 > - Quick reference 
+> - language C++
 
 ---
 
-|table of content     |                                |           |
-|---------------------|------------------------------ -|-----------|
-| data structures     | [Array]()                      |           |
-|                     | [linked list](#linked-list)    | traversal,deletion, middle, reverse |
+|table of content     |                                |                                     |
+|---------------------|--------------------------------|-------------------------------------|
+| data structures     | [Array/vectors]()                      |           |
+|                     | [linked list](#linked-list)    | traversal, delettion, middle, reverse |
 |                     | [stack](#stack)                |           |
 | Patterns            | [Cyclic sorting](#cyclic-sorting) |        | 
-|                     | two pointers     |                         |
+|                     | [sliding window](#sliding-window)     |                         |
 | Algorithms          |                  |                         |
 |                     |                  |                         |
 
@@ -20,18 +21,17 @@
 > ## Data Structures 
 ### Linked List
 
-##### singly linked list
-
-```
+```cpp
+//singly linkedlist
 Struct ListNode {
  int val;
  ListNode* next;
  listNode(int x) : val(x), next(nullptr) {}
  };
 ```
+<br>
 
 > traversing
-
 ```cpp
 ListNode* head = new ListNode(1);
 ListNode* head = new ListNode(2);
@@ -41,10 +41,11 @@ while (cur != nullptr) {
   cur = cur-> next;
   }
 ```
+<br>
 
 > deletion
 
-skipping the node to be deleted, not removing from memory
+- skipping the node to be deleted, not removing from memory
 ```cpp
  ListNode* removeElements(ListNode* head, int val) {
         while (head != nullptr && head->val == val) {
@@ -65,7 +66,7 @@ skipping the node to be deleted, not removing from memory
     }
 ```
 
-default if head is given
+- default if head is given
 ```cpp
 ListNode* cur = head;
 while (cur != nullptr && cur-> next != nullptr) {
@@ -75,16 +76,16 @@ while (cur != nullptr && cur-> next != nullptr) {
   }
 ```
 
-if node is given which is to be deleted (basically overwriiting and then disconnecting)
+- if node is given which is to be deleted (basically overwriiting and then disconnecting)
 ```cpp
 node->val=node->next->val;
 ListNode* del=node->next;
 node->next=node->next->next;
 delete del;
 ```
+<br>
 
 > middle of list
-
 ```cpp
 ListNode* middleNode(ListNode* head) {
         int size=0;
@@ -105,8 +106,10 @@ ListNode* middleNode(ListNode* head) {
     return head;
     }
 ```
+<br>
+
 > reversing
-```
+```cpp
 ListNode* reverseList(ListNode* head) {
       ListNode* ans = nullptr;
       ListNode* curr = head;
@@ -131,10 +134,13 @@ ListNode* reverseList(ListNode* head) {
 
 ---
 
-## Patterns
+> ## Patterns
 ### cyclic sorting
+> identification
+- generally applied on data structures with indices
+- when we need to sort data in a cyclic manner
 
-i.e. to put the element at their respective indexes, 1 at 1, 3 at 3. 6 at 6 ....
+> structure
 
 ```cpp
       int i = 0;
@@ -148,7 +154,55 @@ i.e. to put the element at their respective indexes, 1 at 1, 3 at 3. 6 at 6 ....
             }
       }
 ```
+### sliding window
+> identification
+- used when we need to find the maximum or minimum value in a subarray of a given size
+- generally applied on array or string
+
+> bruteforce fixed sliding window (non scalable)
+
+```cpp
+// NOTE - its not a sliding window but it seems the same when all test case have a fixed size window
+int first_targetsum_subarray(vector<int>& nums, int targetsum)
+{
+    for(int i=0; i<nums.size()-3; i++)
+    {
+        if(nums[i]+nums[i+1]+nums[i+2]==targetsum) //window size = triplet here
+        {
+            return true;
+        }
+        else{
+            false;
+        }
+    }
+}
+```
+
+> fixed sliding window
+```cpp
+double findMaxAverage(vector<int>& nums, int k) {
+        int sum=0;
+        //first window for one time sum
+        for(int i=0; i<k; i++){
+          sum+=nums[i];
+        }
+
+        int maxx = sum;
+
+        //now iterative with adding from forward and removing from last
+        for(int i=k; i<nums.size(); i++)
+        {
+          sum += nums[i]-nums[i-k];
+          if(sum>maxx){
+            maxx=sum;
+          }
+        }
+        double ans = (double)maxx/k;
+    return ans;
+    }
+
+```
 
 ---
 
-## Algorithms
+> ## Algorithms
